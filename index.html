@@ -12,7 +12,7 @@
         }
 
         body {
-            background: #2c2418; /* тёмный песок / земля */
+            background: #2c2418;
             background-image: radial-gradient(circle at 10% 20%, rgba(60, 50, 40, 0.4) 2%, transparent 2.5%),
                               radial-gradient(circle at 80% 70%, rgba(40, 35, 25, 0.3) 1.5%, transparent 2%);
             background-size: 35px 35px, 28px 28px;
@@ -22,7 +22,6 @@
             min-height: 100vh;
         }
 
-        /* военный свиток */
         .container {
             max-width: 1200px;
             margin: 0 auto;
@@ -30,7 +29,6 @@
             position: relative;
         }
 
-        /* эффект выцветшей печатной машинки */
         .header {
             text-align: center;
             margin-bottom: 3rem;
@@ -56,7 +54,6 @@
             word-break: keep-all;
         }
 
-        /* штабная карта (блок) */
         .philosophy {
             background: #2f2a1fcc;
             backdrop-filter: blur(2px);
@@ -94,7 +91,6 @@
             font-family: Georgia, 'Times New Roman', serif;
         }
 
-        /* карточки (планшеты) */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -148,7 +144,6 @@
             border-bottom: 1px dashed #7f6e46;
         }
 
-        /* таблица (рапорт) */
         .report-box {
             background: #1f1b12;
             border: 1px solid #5b4d32;
@@ -156,6 +151,45 @@
             padding: 1.2rem;
             margin-bottom: 2rem;
         }
+
+        /* заголовок таблицы с кнопкой */
+        .report-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.8rem;
+            margin-bottom: 1rem;
+        }
+        .report-header h3 {
+            color: #e2cd8c;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        .download-btn {
+            background: #2b2419;
+            border: 1px solid #7a683f;
+            border-radius: 30px;
+            padding: 0.4rem 1.2rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.75rem;
+            font-weight: bold;
+            color: #cfbc84;
+            cursor: pointer;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.4rem;
+        }
+        .download-btn:hover {
+            background: #3a2f1f;
+            border-color: #b89a4b;
+            color: #f0e2b0;
+            transform: scale(1.02);
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
@@ -176,7 +210,6 @@
             color: #cbbc85;
         }
 
-        /* теги */
         .features {
             display: flex;
             flex-wrap: wrap;
@@ -195,7 +228,6 @@
             letter-spacing: 0.5px;
         }
 
-        /* футер */
         .footer {
             text-align: center;
             padding-top: 1.5rem;
@@ -210,7 +242,6 @@
             text-decoration: none;
         }
 
-        /* военная маркировка */
         .stamp {
             display: inline-block;
             border: 1px solid #c00b0b;
@@ -230,6 +261,10 @@
             .philosophy {
                 padding: 1.2rem;
             }
+            .report-header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
@@ -241,7 +276,6 @@
         <div style="margin-top: 8px;"><span class="stamp">СОВ. СЕКРЕТНО</span></div>
     </div>
 
-    <!-- Философский блок в стиле боевого устава -->
     <div class="philosophy">
         <h2>🎖️ СУЩНОСТЬ ОПЕРАЦИИ</h2>
         <p>
@@ -257,35 +291,34 @@
         </p>
     </div>
 
-    <!-- Ссылки на активы -->
-<div class="projects-grid">
-    <!-- Карточка ENIGMA MODEL (демо + репозиторий) -->
-    <div class="card">
-        <div class="card-icon">🖥️</div>
-        <h3>ENIGMA MODEL</h3>
-        <p>Интерактивный 3D-симулятор машины Enigma. Настройка роторов, плагинборда, визуализация шифрования в реальном времени — учебный инструмент для понимания работы шифратора.</p>
-        <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.8rem;">
-            <a href="https://enigma-model.vercel.app" target="_blank" rel="noopener noreferrer" class="card-link">🌐 ЗАЙТИ В СИМУЛЯТОР →</a>
-            <a href="https://github.com/Gahav0807/enigma-model" target="_blank" rel="noopener noreferrer" class="card-link">🐙 РЕПОЗИТОРИЙ GITHUB →</a>
+    <div class="projects-grid">
+        <div class="card">
+            <div class="card-icon">🖥️</div>
+            <h3>ENIGMA MODEL</h3>
+            <p>Интерактивный 3D-симулятор машины Enigma. Настройка роторов, плагинборда, визуализация шифрования в реальном времени — учебный инструмент для понимания работы шифратора.</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.8rem;">
+                <a href="https://enigma-model.vercel.app" target="_blank" rel="noopener noreferrer" class="card-link">🌐 ЗАЙТИ В СИМУЛЯТОР →</a>
+                <a href="https://github.com/Gahav0807/enigma-model" target="_blank" rel="noopener noreferrer" class="card-link">🐙 РЕПОЗИТОРИЙ GITHUB →</a>
+            </div>
         </div>
+
+        <a href="https://github.com/Gahav0807/crack-enigma" target="_blank" rel="noopener noreferrer" class="card">
+            <div class="card-icon">⚡</div>
+            <h3>CRACK-ENIGMA</h3>
+            <p>C++ брутфорсер с поддержкой smart-алгоритма, crib-атаки, многопоточности, CSV-отчётов. Протестировано на 15 сообщениях — скорость до 252 млн символов/сек.</p>
+            <span class="card-link">РЕПОЗИТОРИЙ GITHUB →</span>
+        </a>
     </div>
 
-    <!-- Карточка CRACK-ENIGMA -->
-    <a href="https://github.com/Gahav0807/crack-enigma" target="_blank" rel="noopener noreferrer" class="card">
-        <div class="card-icon">⚡</div>
-        <h3>CRACK-ENIGMA</h3>
-        <p>C++ брутфорсер с поддержкой smart-алгоритма, crib-атаки, многопоточности, CSV-отчётов. Протестировано на 15 сообщениях — скорость до 252 млн символов/сек.</p>
-        <span class="card-link">РЕПОЗИТОРИЙ GITHUB →</span>
-    </a>
-</div>
-
-    <!-- Результаты экспериментов (рапорт) -->
     <div class="report-box">
-        <h3 style="display: flex; align-items: center; gap: 0.5rem; color:#e2cd8c; margin-bottom: 1rem;">📋 СВОДКА ЭФФЕКТИВНОСТИ АТАК</h3>
+        <div class="report-header">
+            <h3>📋 СВОДКА ЭФФЕКТИВНОСТИ АТАК</h3>
+            <button class="download-btn" id="downloadCsvBtn">📥 СКАЧАТЬ ПОЛНУЮ ТАБЛИЦУ (CSV)</button>
+        </div>
         <div style="overflow-x: auto;">
             <table>
                 <thead>
-                <tr><th>МЕТОД АТАКИ</th><th>СРЕДНЕЕ ВРЕМЯ</th><th>ТОЧНОСТЬ</th><th>ПРАКТИЧНОСТЬ</th></tr>
+                    <tr><th>МЕТОД АТАКИ</th><th>СРЕДНЕЕ ВРЕМЯ</th><th>ТОЧНОСТЬ</th><th>ПРАКТИЧНОСТЬ</th></tr>
                 </thead>
                 <tbody>
                     <tr><td>SMART BRUTEFORCE (без crib)</td><td>1.56 с</td><td>67%</td><td>❌ НЕНАДЁЖЕН</td></tr>
@@ -309,5 +342,21 @@
         <p>© 2025 Ваагн Думанян. Криптоанализ "Энигмы".</p>
     </div>
 </div>
+
+<script>
+    const downloadBtn = document.getElementById('downloadCsvBtn');
+    if (downloadBtn) {
+        downloadBtn.addEventListener('click', function() {
+            // Ссылка на CSV файл, который лежит рядом со страницей
+            const csvUrl = 'test_results.csv';
+            const link = document.createElement('a');
+            link.href = csvUrl;
+            link.download = 'test_results.csv';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
+        });
+    }
+</script>
 </body>
 </html>
