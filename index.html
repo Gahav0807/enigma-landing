@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enigma Cracks | Проект Ваагна Думаняна</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #2c2418; /* тёмный песок / земля */
+            background-image: radial-gradient(circle at 10% 20%, rgba(60, 50, 40, 0.4) 2%, transparent 2.5%),
+                              radial-gradient(circle at 80% 70%, rgba(40, 35, 25, 0.3) 1.5%, transparent 2%);
+            background-size: 35px 35px, 28px 28px;
+            font-family: 'Courier New', 'Fira Code', 'Segoe UI', monospace;
+            color: #dad2b0;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        /* военный свиток */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+            position: relative;
+        }
+
+        /* эффект выцветшей печатной машинки */
+        .header {
+            text-align: center;
+            margin-bottom: 3rem;
+            border-bottom: 2px solid #6b5a3e;
+            padding-bottom: 1rem;
+        }
+
+        .title {
+            font-size: 3rem;
+            font-weight: 800;
+            text-transform: uppercase;
+            letter-spacing: 6px;
+            color: #cfb87c;
+            text-shadow: 3px 3px 0px #2a241a;
+            margin-bottom: 0.5rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .subtitle {
+            font-size: 1rem;
+            color: #a39474;
+            letter-spacing: 2px;
+            word-break: keep-all;
+        }
+
+        /* штабная карта (блок) */
+        .philosophy {
+            background: #2f2a1fcc;
+            backdrop-filter: blur(2px);
+            border: 1px solid #7b6b48;
+            border-radius: 0.75rem;
+            padding: 2rem;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 8px 18px rgba(0,0,0,0.4), inset 0 1px 0 rgba(255,255,200,0.05);
+        }
+
+        .philosophy h2 {
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            color: #d8c792;
+            border-left: 4px solid #9e8b5c;
+            padding-left: 1rem;
+            font-family: monospace;
+            text-transform: uppercase;
+        }
+
+        .philosophy p {
+            font-size: 1rem;
+            margin-bottom: 1rem;
+            color: #cdc2a5;
+        }
+
+        .quote {
+            font-style: italic;
+            border-left: 4px solid #a8894b;
+            background: #2a241a66;
+            padding: 1rem 1.5rem;
+            margin: 1.2rem 0;
+            color: #f0e2b0;
+            font-weight: 500;
+            font-family: Georgia, 'Times New Roman', serif;
+        }
+
+        /* карточки (планшеты) */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-bottom: 3rem;
+        }
+
+        .card {
+            background: #242015;
+            border: 1px solid #5c5036;
+            border-radius: 0.5rem;
+            padding: 1.5rem;
+            transition: all 0.2s ease;
+            text-decoration: none;
+            color: inherit;
+            display: block;
+            box-shadow: 0 5px 12px rgba(0,0,0,0.3);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            border-color: #b89a4b;
+            background: #2f281c;
+            box-shadow: 0 12px 20px rgba(0,0,0,0.5);
+        }
+
+        .card-icon {
+            font-size: 2.2rem;
+            filter: drop-shadow(2px 2px 0px #3a2f1f);
+        }
+
+        .card h3 {
+            font-size: 1.4rem;
+            margin: 0.5rem 0;
+            color: #e2cf92;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .card p {
+            color: #b7aa82;
+            font-size: 0.9rem;
+        }
+
+        .card-link {
+            display: inline-block;
+            margin-top: 1rem;
+            color: #e6c87a;
+            font-weight: bold;
+            text-decoration: none;
+            border-bottom: 1px dashed #7f6e46;
+        }
+
+        /* таблица (рапорт) */
+        .report-box {
+            background: #1f1b12;
+            border: 1px solid #5b4d32;
+            border-radius: 0.5rem;
+            padding: 1.2rem;
+            margin-bottom: 2rem;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Courier New', monospace;
+            font-size: 0.85rem;
+        }
+        th, td {
+            padding: 0.6rem 0.3rem;
+            border-bottom: 1px solid #4c412b;
+            text-align: left;
+        }
+        th {
+            color: #e9d494;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        td {
+            color: #cbbc85;
+        }
+
+        /* теги */
+        .features {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.7rem;
+            margin-top: 1rem;
+            justify-content: center;
+        }
+        .feature-tag {
+            background: #2b2419;
+            border-radius: 20px;
+            padding: 0.2rem 1rem;
+            font-size: 0.7rem;
+            font-family: monospace;
+            border: 1px solid #6f5d3b;
+            color: #cfbc84;
+            letter-spacing: 0.5px;
+        }
+
+        /* футер */
+        .footer {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid #5b4e32;
+            margin-top: 1rem;
+            font-size: 0.75rem;
+            color: #8f8468;
+            font-family: monospace;
+        }
+        .footer a {
+            color: #cbbd87;
+            text-decoration: none;
+        }
+
+        /* военная маркировка */
+        .stamp {
+            display: inline-block;
+            border: 1px solid #c00b0b;
+            padding: 0.1rem 0.8rem;
+            font-size: 0.7rem;
+            letter-spacing: 2px;
+            background: #2c241a;
+            color: #c00b0b;
+            transform: rotate(-2deg);
+        }
+
+        @media (max-width: 640px) {
+            .title {
+                font-size: 1.8rem;
+                letter-spacing: 3px;
+            }
+            .philosophy {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1 class="title">⚙️ ENIGMA CRACKS</h1>
+        <div class="subtitle">ПОЛЕВОЙ ЖУРНАЛ КРИПТОАНАЛИЗА | ОПЕРАЦИЯ ULTRA</div>
+        <div style="margin-top: 8px;"><span class="stamp">СОВ. СЕКРЕТНО</span></div>
+    </div>
+
+    <!-- Философский блок в стиле боевого устава -->
+    <div class="philosophy">
+        <h2>🎖️ СУЩНОСТЬ ОПЕРАЦИИ</h2>
+        <p>
+          «Энигма» — шифровальная машина вермахта, считавшаяся невзламываемой. Однако любая система, какой бы сложной она ни была, уязвима перед тактической разведкой и человеческим фактором. Операторы допускали ошибки — использовали стандартные приветствия, повторяющиеся фразы, одни и те же настройки. Именно эти человеческие следы становились тем самым известным фрагментом (crib). Когда перехватчик знает хотя бы одно слово открытого текста — вражеская оборона рушится.
+        </p>
+        <div class="quote">
+            Иногда одного слова достаточно, чтобы разрушить самую сложную стену секретности.
+        </div>
+        <p>
+            Данный проект — аналитическая платформа, демонстрирующая <strong>преимущество атаки с известным фрагментом</strong> 
+            перед грубой силой и статистическим перебором. Разработано <strong>Ваагном Думаняном</strong> 
+            в рамках криптоанализа Enigma. Исходный код, автотесты и результаты экспериментов — открыты.
+        </p>
+    </div>
+
+    <!-- Ссылки на активы -->
+<div class="projects-grid">
+    <!-- Карточка ENIGMA MODEL (демо + репозиторий) -->
+    <div class="card">
+        <div class="card-icon">🖥️</div>
+        <h3>ENIGMA MODEL</h3>
+        <p>Интерактивный 3D-симулятор машины Enigma. Настройка роторов, плагинборда, визуализация шифрования в реальном времени — учебный инструмент для понимания работы шифратора.</p>
+        <div style="display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 0.8rem;">
+            <a href="https://enigma-model.vercel.app" target="_blank" rel="noopener noreferrer" class="card-link">🌐 ЗАЙТИ В СИМУЛЯТОР →</a>
+            <a href="https://github.com/Gahav0807/enigma-model" target="_blank" rel="noopener noreferrer" class="card-link">🐙 РЕПОЗИТОРИЙ GITHUB →</a>
+        </div>
+    </div>
+
+    <!-- Карточка CRACK-ENIGMA -->
+    <a href="https://github.com/Gahav0807/crack-enigma" target="_blank" rel="noopener noreferrer" class="card">
+        <div class="card-icon">⚡</div>
+        <h3>CRACK-ENIGMA</h3>
+        <p>C++ брутфорсер с поддержкой smart-алгоритма, crib-атаки, многопоточности, CSV-отчётов. Протестировано на 15 сообщениях — скорость до 252 млн символов/сек.</p>
+        <span class="card-link">РЕПОЗИТОРИЙ GITHUB →</span>
+    </a>
+</div>
+
+    <!-- Результаты экспериментов (рапорт) -->
+    <div class="report-box">
+        <h3 style="display: flex; align-items: center; gap: 0.5rem; color:#e2cd8c; margin-bottom: 1rem;">📋 СВОДКА ЭФФЕКТИВНОСТИ АТАК</h3>
+        <div style="overflow-x: auto;">
+            <table>
+                <thead>
+                <tr><th>МЕТОД АТАКИ</th><th>СРЕДНЕЕ ВРЕМЯ</th><th>ТОЧНОСТЬ</th><th>ПРАКТИЧНОСТЬ</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>SMART BRUTEFORCE (без crib)</td><td>1.56 с</td><td>67%</td><td>❌ НЕНАДЁЖЕН</td></tr>
+                    <tr><td><strong style="color:#e6d191;">CRIB ATTACK</strong></td><td><strong>1.30 с</strong></td><td><strong>100%</strong></td><td>✅ ОПТИМАЛЕН</td></tr>
+                    <tr><td>ПОЛНЫЙ ПЕРЕБОР (bruteforce)</td><td>≈ 133 мин (2.2 ч)</td><td>100% (теор.)</td><td>❌ НЕПРИЕМЛЕМ</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="features">
+            <span class="feature-tag">#C++20</span>
+            <span class="feature-tag">#МНОГОПОТОЧНОСТЬ</span>
+            <span class="feature-tag">#КРИБ-АТАКА</span>
+            <span class="feature-tag">#QGRAM SCORING</span>
+            <span class="feature-tag">#IOC</span>
+            <span class="feature-tag">#CSV ОТЧЁТЫ</span>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>«Информатика — это не больше наука о компьютерах, чем астрономия — наука о телескопах.» - Эдсгер Дейкстра</p>
+        <p>© 2025 Ваагн Думанян. Криптоанализ "Энигмы".</p>
+    </div>
+</div>
+</body>
+</html>
